@@ -1,0 +1,11 @@
+### get all users
+
+GET http://localhost:3005/users
+
+### get all albums
+
+GET http://localhost:3005/albums
+
+### get all photos
+
+GET http://localhost:3005/photos
