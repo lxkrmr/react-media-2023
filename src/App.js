@@ -1,10 +1,9 @@
+import UsersList from './components/UsersList';
+
 function App() {
   return (
-    <div>
-      <h1>Hi there!</h1>
-      <p className="border">
-        This should have a border if tailwind is working.
-      </p>
+    <div className="container mx-auto">
+      <UsersList />
     </div>
   );
 }
