@@ -4,13 +4,13 @@ import AlbumsListItem from './AlbumsListItem';
 import Button from './Button';
 
 function AlbumList({ user }) {
-  const { data, error, isLoading } = useFetchAlbumsQuery(user);
+  const { data, error, isFetching } = useFetchAlbumsQuery(user);
   const [addAlbum, results] = useAddAlbumMutation();
 
   const handleAddAlbum = () => addAlbum(user);
 
-  const content = (isLoading, error, data) => {
-    if (isLoading) {
+  const content = (isFetching, error, data) => {
+    if (isFetching) {
       return <Skeleton times={3} className="h-10 w-full" />;
     }
 
@@ -31,7 +31,7 @@ function AlbumList({ user }) {
           + Add Album
         </Button>
       </div>
-      <div>{content(isLoading, error, data)}</div>
+      <div>{content(isFetching, error, data)}</div>
     </div>
   );
 }
