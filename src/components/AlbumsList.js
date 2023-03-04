@@ -1,11 +1,16 @@
-import { useFetchAlbumsQuery, useAddAlbumMutation } from '../store';
+import {
+  useFetchAlbumsQuery,
+  useAddAlbumMutation,
+  useRemoveAlbumMutation,
+} from '../store';
 import Skeleton from './Skeleton';
-import ExpandablePanel from './ExpandablePanel';
+import AlbumsListItem from './AlbumsListItem';
 import Button from './Button';
 
 function AlbumList({ user }) {
   const { data, error, isLoading } = useFetchAlbumsQuery(user);
   const [addAlbum, results] = useAddAlbumMutation();
+  const [removeAlbum, removeAlbumResult] = useRemoveAlbumMutation();
 
   const handleAddAlbum = () => addAlbum(user);
 
@@ -19,12 +24,7 @@ function AlbumList({ user }) {
     }
 
     return data.map((album) => {
-      const header = <div>{album.title}</div>;
-      return (
-        <ExpandablePanel key={album.id} header={header}>
-          List of photos in the album.
-        </ExpandablePanel>
-      );
+      return <AlbumsListItem key={album.id} album={album} />;
     });
   };
 
